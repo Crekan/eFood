@@ -18,16 +18,9 @@ services:
     depends_on:
       - database
 
-  frontend:
-    build: ../frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - efood-app
-
   database:
     image: postgres:14.6-alpine
-    environment: 
+    environment:
       - POSTGRES_DB=dbname
       - POSTGRES_USER=dbuser
       - POSTGRES_PASSWORD=pass
