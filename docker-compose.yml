@@ -1,11 +1,10 @@
 services:
   efood-app:
     build:
-      context: .
+      context: backend
     ports:
       - "8000:8000"
-    volumes:
-      - ./efood:/efood
+
     environment:
       - DB_HOST=database
       - DB_NAME=dbname
@@ -17,6 +16,12 @@ services:
 
     depends_on:
       - database
+
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - "3000:3000"
 
   database:
     image: postgres:14.6-alpine
