@@ -5,12 +5,6 @@ services:
     ports:
       - "8000:8000"
 
-    environment:
-      - DB_HOST=database
-      - DB_NAME=dbname
-      - DB_USER=dbuser
-      - DB_PASS=pass
-
     command: >
       sh -c "python manage.py runserver 0.0.0.0:8000"
 
@@ -26,8 +20,8 @@ services:
   database:
     image: postgres:14.6-alpine
     environment:
-      - POSTGRES_DB=dbname
-      - POSTGRES_USER=dbuser
-      - POSTGRES_PASSWORD=pass
+      - POSTGRES_USER: myuser
+      - POSTGRES_PASSWORD: mypassword
+      - POSTGRES_DB: mydb
     ports:
       - "5432:5432"
