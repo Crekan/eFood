@@ -15,7 +15,7 @@ RUN npm install axios
 COPY efood /efood
 
 # сборка приложения для продакшн с минимизацией
-RUN npm run build
+#RUN npm run build
 # экспозиция порта 3000 для контейнера
 EXPOSE 3000
 
