@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'efood_db',
         'USER': 'postgres',
         'PASSWORD': '',
-        'HOST': 'localhost',
+        'HOST': 'http://creaky.pythonanywhere.com/',
         'PORT': '5432',
     }
 }
