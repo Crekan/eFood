@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 
 import environ
 from pathlib import Path
@@ -28,12 +29,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b6&d01fdtc#haxl*$ovl6u5s(b83&ukygm_%%jilw21-mod#!0'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['spicy-bat-production.up.railway.app', '127.0.0.1']
 
 # Application definition
 
@@ -89,11 +90,11 @@ WSGI_APPLICATION = 'efood.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('DATABASES_NAME'),
-        'USER': env('DATABASES_USER'),
-        'PASSWORD': env('DATABASES_PASSWORD'),
-        'HOST': env('DATABASES_HOST'),
-        'PORT': env('DATABASES_PORT'),
+        'NAME': os.environ.get('DATABASES_NAME'),
+        'USER': os.environ.get('DATABASES_USER'),
+        'PASSWORD': os.environ.get('DATABASES_PASSWORD'),
+        'HOST': os.environ.get('DATABASES_HOST'),
+        'PORT': os.environ.get('DATABASES_PORT'),
     }
 }
 
@@ -130,6 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
