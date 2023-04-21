@@ -15,6 +15,8 @@ import environ
 from pathlib import Path
 
 env = environ.Env(
+    SECRET_KEY=(str,),
+    DEBUG=(str,),
     DATABASE_NAME=(str,),
     DATABASE_USER=(str,),
     DATABASE_PASSWORD=(str,),
@@ -29,12 +31,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'mu*@ips73!_18nk^-h4evzo+3$gdln6l)(s)ah(lg*^&yre5t^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = os.environ.get('DEBUG')
+DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = ['spicy-bat-production.up.railway.app', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -90,11 +93,11 @@ WSGI_APPLICATION = 'efood.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASES_NAME'),
-        'USER': os.environ.get('DATABASES_USER'),
-        'PASSWORD': os.environ.get('DATABASES_PASSWORD'),
-        'HOST': os.environ.get('DATABASES_HOST'),
-        'PORT': os.environ.get('DATABASES_PORT'),
+        'NAME': os.environ.get('DATABASE_NAME'),
+        'USER': os.environ.get('DATABASE_USER'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD'),
+        'HOST': os.environ.get('DATABASE_HOST'),
+        'PORT': os.environ.get('DATABASE_PORT'),
     }
 }
 
@@ -130,8 +133,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_URL = '/static/'
+
+if DEBUG:
+    STATICFILES_DIRS = (
+        BASE_DIR / 'static',
+    )
+else:
+    STATIC_ROOT = BASE_DIR / 'static'
+
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

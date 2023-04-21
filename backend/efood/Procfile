@@ -1,1 +1,0 @@
-web: gunicorn efood.wsgi --log-file
