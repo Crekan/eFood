@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'test_api.apps.TestApiConfig',
+    'products.apps.ProductsConfig',
 ]
 
 MIDDLEWARE = [
