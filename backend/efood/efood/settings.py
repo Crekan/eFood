@@ -37,7 +37,7 @@ SECRET_KEY = 'mu*@ips73!_18nk^-h4evzo+3$gdln6l)(s)ah(lg*^&yre5t^'
 # DEBUG = os.environ.get('DEBUG')
 DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_filters',
     'corsheaders',
+    'debug_toolbar',
 
     'products.apps.ProductsConfig',
 ]
@@ -65,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'efood.urls'
@@ -172,4 +174,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]

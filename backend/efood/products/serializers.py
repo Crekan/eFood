@@ -11,6 +11,12 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['image', 'name']
 
 
+class ProductCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['image', 'name', 'price', 'category']
+
+
 class ProductSerializer(serializers.ModelSerializer):
     category = CategorySerializer()
 
