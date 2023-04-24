@@ -1,5 +1,5 @@
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import generics
+from rest_framework import generics, permissions
 
 from .models import Product
 from .serializers import ProductSerializer, ProductDetailSerializer
@@ -14,6 +14,7 @@ class ProductsView(generics.ListAPIView):
 
 class ProductRetrivUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductDetailSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
         return Product.objects.filter(id=self.kwargs['pk'])
