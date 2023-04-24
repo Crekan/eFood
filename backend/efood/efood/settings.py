@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     'products.apps.ProductsConfig',
+    'restaurants.apps.RestaurantsConfig',
 ]
 
 MIDDLEWARE = [
