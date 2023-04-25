@@ -165,7 +165,7 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PAGINATION_CLASS':
         'rest_framework.pagination.LimitOffsetPagination',
-        'PAGE_SIZE': 5,
+    'PAGE_SIZE': 5,
 }
 
 # corsheaders
@@ -180,3 +180,20 @@ CORS_ALLOWED_ORIGINS = [
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# Settings email
+
+# if DEBUG:
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# else:
+# EMAIL_HOST = os.environ.get('EMAIL_HOST')
+# EMAIL_PORT = os.environ.get('EMAIL_PORT')
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.com'
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'crekantest@yandex.ru'
+EMAIL_HOST_PASSWORD = '12345678178qqq'
+EMAIL_USE_SSL = True
