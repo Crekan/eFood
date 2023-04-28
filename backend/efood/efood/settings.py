@@ -50,12 +50,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'django_filters',
     'corsheaders',
     'debug_toolbar',
 
     'products.apps.ProductsConfig',
     'restaurants.apps.RestaurantsConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -183,17 +185,14 @@ INTERNAL_IPS = [
 
 # Settings email
 
-# if DEBUG:
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# else:
-# EMAIL_HOST = os.environ.get('EMAIL_HOST')
-# EMAIL_PORT = os.environ.get('EMAIL_PORT')
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-# EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.com'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = 'crekantest@yandex.ru'
 EMAIL_HOST_PASSWORD = '12345678178qqq'
 EMAIL_USE_SSL = True
+
+
+# Custom User
+
+AUTH_USER_MODEL = 'users.CustomUser'
